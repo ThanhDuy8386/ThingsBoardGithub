@@ -1,0 +1,60 @@
+services:
+  # Minimal JS executor
+  tb-js-executor:
+    deploy:
+      replicas: 1
+    environment:
+      JAVA_OPTS: "-Xmx256M -Xms128M"
+  
+  # Keep only one core
+  tb-core1:
+    environment:
+      JAVA_OPTS: "-Xmx512M -Xms256M"
+  
+  tb-core2:
+    deploy:
+      replicas: 0
+  
+  # Keep only one rule engine  
+  tb-rule-engine1:
+    environment:
+      JAVA_OPTS: "-Xmx512M -Xms256M"
+  
+  tb-rule-engine2:
+    deploy:
+      replicas: 0
+  
+  # Disable optional transports
+  tb-mqtt-transport2:
+    deploy:
+      replicas: 0
+  
+  tb-http-transport2:
+    deploy:
+      replicas: 0
+  
+  tb-coap-transport:
+    deploy:
+      replicas: 0
+  
+  tb-lwm2m-transport:
+    deploy:
+      replicas: 0
+  
+  tb-snmp-transport:
+    deploy:
+      replicas: 0
+  
+  # Keep only one web UI
+  tb-web-ui2:
+    deploy:
+      replicas: 0
+  
+  # Disable version control executor
+  tb-vc-executor1:
+    deploy:
+      replicas: 0
+  
+  tb-vc-executor2:
+    deploy:
+      replicas: 0
